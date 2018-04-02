@@ -1,0 +1,17 @@
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\FinalAssignmentSDT.csprojResolveAssemblyReference.cache
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\MainWindow.g.cs
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\Window1.g.cs
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\App.g.cs
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\FinalAssignmentSDT_MarkupCompile.cache
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\FinalAssignmentSDT_MarkupCompile.lref
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\bin\Debug\FinalAssignmentSDT.exe.config
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\bin\Debug\FinalAssignmentSDT.exe
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\bin\Debug\FinalAssignmentSDT.pdb
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\MainWindow.baml
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\Window1.baml
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\FinalAssignmentSDT.g.resources
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\FinalAssignmentSDT.Properties.Resources.resources
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\FinalAssignmentSDT.csproj.GenerateResource.Cache
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\FinalAssignmentSDT.csproj.CoreCompileInputs.cache
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\FinalAssignmentSDT.exe
+C:\Users\Pushpakkurellae\source\repos\FinalAssignmentSDT\FinalAssignmentSDT\obj\Debug\FinalAssignmentSDT.pdb
