@@ -55,6 +55,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Appointment.cs" />
+    <Compile Include="AppointmentList.cs" />
+    <Compile Include="Firm.cs" />
+    <Compile Include="IFirm.cs" />
+    <Compile Include="ITConsultancy.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
