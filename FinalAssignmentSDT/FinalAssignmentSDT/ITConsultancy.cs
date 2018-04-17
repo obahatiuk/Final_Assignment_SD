@@ -9,7 +9,7 @@ namespace FinalAssignmentSDT
     class ITConsultancy : Firm
     {
         public ITConsultancy()
-        {
+        {//
                 
         }
         public ITConsultancy(bool previousCustomer,string tokenNo,int fees)
