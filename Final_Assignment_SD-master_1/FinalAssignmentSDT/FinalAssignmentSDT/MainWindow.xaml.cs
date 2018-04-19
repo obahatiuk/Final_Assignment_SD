@@ -171,15 +171,7 @@ namespace FinalAssignmentSDT
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
-            DateTime dateOfTemporatyApointment = tempAppointment.Date;
-            String slotOfTemporatyApointment = string.Copy(tempAppointment.Time);
-            Dictionary<DateTime, List<string>>.KeyCollection arrangedDates = arrangedTime.Keys;
-            if (!arrangedDates.Contains(dateOfTemporatyApointment))
-            {
-                arrangedTime.Add(dateOfTemporatyApointment, new List<string>());
-            }
             
-            arrangedTime[dateOfTemporatyApointment].Add(slotOfTemporatyApointment);
             
             BindingExpression be = tbPhoneNumber.GetBindingExpression(TextBox.TextProperty);
             BindingExpression be1 = cbTime.GetBindingExpression(ComboBox.SelectedItemProperty);
@@ -205,6 +197,17 @@ namespace FinalAssignmentSDT
                 && Validation.GetErrors(dpDate).Count() == 0
                 )
             {
+                DateTime dateOfTemporatyApointment = tempAppointment.Date;
+                String slotOfTemporatyApointment = string.Copy(tempAppointment.Time);//
+                Dictionary<DateTime, List<string>>.KeyCollection arrangedDates = arrangedTime.Keys;
+                if (!arrangedDates.Contains(dateOfTemporatyApointment))
+                {
+                    arrangedTime.Add(dateOfTemporatyApointment, new List<string>());
+                }
+
+                arrangedTime[dateOfTemporatyApointment].Add(slotOfTemporatyApointment);
+
+
                 Appointment a = (Appointment)tempAppointment.Clone();
                 a.Id = appointmentsList.Count + 1;
                 bool containsA = appointmentsList.ToList().Contains(a);
@@ -212,26 +215,27 @@ namespace FinalAssignmentSDT
                 {
                     appointmentsList.Add(a);
                 }
-            }
-               
+                WriteToXML();
                 tempAppointment.Date = DateTime.Today.AddDays(1);
                 dpDate.SelectedDate = DateTime.Today.AddDays(1);
-                
+
                 tbName.Text = "";
                 tbPhoneNumber.Text = "";
                 cbTime.SelectedIndex = -1;
                 cbDepartment.SelectedIndex = -1;
                 cbService.SelectedIndex = -1;
                 cbTypeOfClient.SelectedIndex = -1;
-                
+
 
                 Services = new ObservableCollection<string>();
                 Departments = new ObservableCollection<string>();
-                
+
                 Validation.ClearInvalid(be4);
                 Validation.ClearInvalid(be1);
                 Validation.ClearInvalid(be2);
                 Validation.ClearInvalid(be3);
+            }
+            
                 
             
 
@@ -423,9 +427,6 @@ namespace FinalAssignmentSDT
             datagrid.Items.Refresh();
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
-            WriteToXML();
-        }
+        
     } 
 }
