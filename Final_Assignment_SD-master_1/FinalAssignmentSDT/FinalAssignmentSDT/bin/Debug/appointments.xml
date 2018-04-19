@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAppointment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Appointment>
+    <Id>2</Id>
+    <Time>PM5</Time>
+    <TypeOfCustomer>Corporate</TypeOfCustomer>
+    <Customer>
+      <FirstName>qqqqqqqqqqqqqqq</FirstName>
+      <Phone>11111111111111111</Phone>
+    </Customer>
+    <Date>2018-04-27T00:00:00</Date>
+    <Department>Kitchener</Department>
+    <Service>Taxation</Service>
+  </Appointment>
+  <Appointment>
+    <Id>2</Id>
+    <Time>PM3</Time>
+    <TypeOfCustomer>Corporate</TypeOfCustomer>
+    <Customer>
+      <FirstName>qqqqqqqqqqqqqqq</FirstName>
+      <Phone>11111111111111111</Phone>
+    </Customer>
+    <Date>2018-04-27T00:00:00</Date>
+    <Department>Kitchener</Department>
+    <Service>Taxation</Service>
+  </Appointment>
+  <Appointment>
+    <Id>3</Id>
+    <Time>PM1</Time>
+    <TypeOfCustomer>Corporate</TypeOfCustomer>
+    <Customer>
+      <FirstName>ssssssssssssssss</FirstName>
+      <Phone>11111111111</Phone>
+    </Customer>
+    <Date>2018-04-27T00:00:00</Date>
+    <Department>Kitchener</Department>
+    <Service>Investment</Service>
+  </Appointment>
+</ArrayOfAppointment>
