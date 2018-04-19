@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FinalAssignmentSDT"
         xmlns:local1="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="729.5" Width="1300" WindowState="Maximized" WindowStartupLocation="Manual" ResizeMode="CanMinimize">
+        Title="MainWindow" Height="729.5" Width="1300" WindowStartupLocation="Manual" ResizeMode="CanMinimize">
     <Window.Resources>
         <local:MyConverter x:Key="MyConverter"/>
     </Window.Resources>
@@ -35,7 +35,7 @@
         <Label x:Name="lblPhone" Content="Phone Number" HorizontalAlignment="Left" Margin="10,299,0,0" VerticalAlignment="Top" Height="26" Width="100" Grid.Row="2"/>
         <Label x:Name="lblCustomerName" Content="Customer Name" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top" Height="26" Width="100" Grid.Row="2"/>
         <Label x:Name="lblCustomerType" Content="Consultancy Type" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,3.41" Height="26" Width="120" Grid.Row="2"/>
-        <Button x:Name="btnSave" Content="Add" HorizontalAlignment="Left" Margin="64,483,0,0" VerticalAlignment="Top" Width="100" Height="25" Grid.Row="2" Click="btnSave_Click" />
+        <Button x:Name="btnSave" Content="Add" HorizontalAlignment="Left" Margin="-21,483,0,0" VerticalAlignment="Top" Width="100" Height="25" Grid.Row="2" Click="btnSave_Click" />
         <Button x:Name="btnClear" Content="Save" HorizontalAlignment="Left" Margin="238,483,0,0" VerticalAlignment="Top" Width="100" Height="25" RenderTransformOrigin="0.733,0.64" Grid.Row="2" Click="btnClear_Click" />
         <ComboBox x:Name="cbTime" ItemsSource="{Binding Path=Slots}"  HorizontalAlignment="Left" Margin="151,77,0,0" VerticalAlignment="Top" Width="165"  Height="22" Grid.Row="2">
             <ComboBox.SelectedItem>
@@ -125,61 +125,10 @@
                                     Binding="{Binding Path=Service}"/>
                         <DataGridTextColumn Header="Name"
                                     Binding="{Binding Path=Customer.FirstName}"/>
-                        
+
                     </DataGrid.Columns>
                 </DataGrid>
-                <GroupBox Header="Add Appointment to grid">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="ID" Grid.Row="0" Grid.Column="0" />
-                        <TextBlock Text="Time" Grid.Row="0" Grid.Column="1" />
-                        <TextBlock Text="Date" Grid.Row="0" Grid.Column="2" />
-                        <TextBlock Text="Appointment Type" Grid.Row="0" Grid.Column="3" />
-                        <TextBox x:Name="txtID" Grid.Row="1" Grid.Column="0" />
-                        <TextBox x:Name="txtTime" Grid.Row="1" Grid.Column="1" />
-                        <TextBox x:Name="txtDay"  Grid.Row="1" Grid.Column="2" />
-                        <TextBox x:Name="txtAppointmentType" Grid.Row="1" Grid.Column="3" />
-                    </Grid>
-
-                </GroupBox>
-                <GroupBox Header="Show/Update Selected info">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="ID" Grid.Row="0" Grid.Column="0" />
-                        <TextBlock Text="Time" Grid.Row="0" Grid.Column="1" />
-                        <TextBlock Text="Date" Grid.Row="0" Grid.Column="2" />
-                        <TextBlock Text="Appointment Type" Grid.Row="0" Grid.Column="3" />
-                        <TextBox x:Name="txtShowID"  Grid.Row="1" Grid.Column="0" Text="{Binding SelectedItem.Id, ElementName=datagrid}" />
-                        <TextBox  x:Name="txtShowTime" Grid.Row="1" Grid.Column="1" Text="{Binding SelectedItem.Time, ElementName=datagrid}" />
-                        <TextBox  x:Name="txtShowDay" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.Date, StringFormat=d, ElementName=datagrid}" />
-                        <TextBox  x:Name="txtShowAppointmentType" Grid.Row="1" Grid.Column="3" Text="{Binding SelectedItem.Type, ElementName=datagrid}" />
-                    </Grid>
-
-                </GroupBox>
-                <StackPanel Orientation="Horizontal" >
-                    <Button  Content="Add"  Click="btnAdd" Width="100" Height="30" Background="#FFA0CF99" Margin="220,15,0,0"  />
-                    <Button  Content="Update"  Click="btnUpdate" Width="100" Height="30" Background="#FF98C2F5" Margin="10,15,0,0" />
-                    <Button  Content="Delete"  Click="btnDelete" Width="100" Height="30" Background="#FFF38F7F" Margin="10,15,0,0"/>
-                </StackPanel>
-                <Label Content="Label"/>
+                <StackPanel Orientation="Horizontal" />
             </StackPanel>
         </Grid>
         <DatePicker x:Name="dpDate"  HorizontalAlignment="Left" Margin="149,46,0,0" Grid.Row="2" VerticalAlignment="Top" Width="167" SelectedDateChanged="dpDate_SelectedDateChanged">
@@ -191,6 +140,6 @@
                 </Binding>
             </DatePicker.SelectedDate>
         </DatePicker>
-        <Button x:Name="btnDisplay" Content="Display" HorizontalAlignment="Left" Margin="149,576,0,0" VerticalAlignment="Top" Width="100" Height="25" Grid.Row="2" Click="btnDisplay_Click" />
+        <Button x:Name="btnDisplay" Content="Display" HorizontalAlignment="Left" Margin="108,483,0,0" VerticalAlignment="Top" Width="100" Height="25" Grid.Row="2" Click="btnDisplay_Click" />
     </Grid>
 </Window>
