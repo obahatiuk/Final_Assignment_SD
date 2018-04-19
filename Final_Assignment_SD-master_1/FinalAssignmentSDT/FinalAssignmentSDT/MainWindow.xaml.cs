@@ -271,7 +271,6 @@ namespace FinalAssignmentSDT
         private void WriteToXML()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Appointment>));
-            
             TextWriter writer = new StreamWriter("appointments.xml");
             serializer.Serialize(writer, appointmentsList);
             writer.Close();
