@@ -28,7 +28,7 @@ namespace FinalAssignmentSDT
             
             if (inputString == null || inputString == "")
             {
-                result = new ValidationResult(false, "Value cannot be empty");
+                result = new ValidationResult(false, "Data entered cannot be empty");
             }
             else if (!rule.IsMatch(inputString))
             {

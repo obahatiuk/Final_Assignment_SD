@@ -60,4 +60,28 @@
     <Department>Kitchener</Department>
     <Service>Taxation</Service>
   </Appointment>
+  <Appointment>
+    <Id>6</Id>
+    <Time>PM3</Time>
+    <TypeOfCustomer>Individual</TypeOfCustomer>
+    <Customer>
+      <FirstName>pushpak</FirstName>
+      <Phone>51111111111111</Phone>
+    </Customer>
+    <Date>2018-04-20T00:00:00</Date>
+    <Department>Kitchener</Department>
+    <Service>Investment</Service>
+  </Appointment>
+  <Appointment>
+    <Id>7</Id>
+    <Time>AM9</Time>
+    <TypeOfCustomer>Individual</TypeOfCustomer>
+    <Customer>
+      <FirstName>hhgggggggg</FirstName>
+      <Phone>1445522225</Phone>
+    </Customer>
+    <Date>2018-04-20T00:00:00-04:00</Date>
+    <Department>Waterloo</Department>
+    <Service>Taxation</Service>
+  </Appointment>
 </ArrayOfAppointment>

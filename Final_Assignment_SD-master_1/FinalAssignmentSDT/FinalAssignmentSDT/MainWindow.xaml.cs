@@ -40,7 +40,7 @@ namespace FinalAssignmentSDT
 
         public Dictionary<DateTime, List<string>> arrangedTime = new Dictionary<DateTime, List<string>>();
         private Firm firm = new Firm();
-        public List<string> availableSlots = new List<string>() { "AM9", "AM11", "PM1", "PM3", "PM5" };
+        public List<string> availableSlots = new List<string>() { "9AM", "10AM", "11AM","12AM", "1PM", "2PM" , "3PM","4PM", "5PM" };
 
         public Appointment TempAppointment { get => tempAppointment; set => tempAppointment = value; }
         public List<string> TypesOfClient { get => typesOfClient; set => typesOfClient = value; }
@@ -75,6 +75,7 @@ namespace FinalAssignmentSDT
             appointmentsList = new ObservableCollection<Appointment>();
             appointmentsListXML = new ObservableCollection<Appointment>();
             Slots = new ObservableCollection<string>();
+            WriteToXML();
             ReadFromXML();
             foreach (Appointment a in appointmentsList.ToList())
             {
@@ -83,10 +84,7 @@ namespace FinalAssignmentSDT
 
             foreach (Appointment a in appointmentsListXML)
             {
-
-
-                bool contains = !(appointmentsList.Contains(a));
-                if (contains)
+                if (!(appointmentsList.Contains(a)))
                 {
                     appointmentsList.Add(a);
                 }
@@ -145,39 +143,24 @@ namespace FinalAssignmentSDT
                 {
                     Dictionary<string, List<string>>.KeyCollection keyColl = serviceDetails[tempAppointment.TypeOfCustomer].Keys;
                     List<string> typesOfServices = new List<string>();
+                    
                     foreach (string service in keyColl)
                     {
                         Services.Add(service);
                     }
+                    
+                    MyList.Items.Refresh();
                 }
             }
         }
 
-        private void cbService_SelectionChanged(object sender, SelectionChangedEventArgs e)
+         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (cbService.SelectedIndex != -1)
-            {
-                Dictionary<string, Dictionary<string, List<string>>> serviceDetails = Firm.Firm_;
-                List<string> keyColl = serviceDetails[TempAppointment.TypeOfCustomer][tempAppointment.Service];
-
-                foreach (string department in keyColl)
-                {
-                    Departments.Add(department);
-                }
-            }
-            
-        }
-
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-
-            
-            
             BindingExpression be = tbPhoneNumber.GetBindingExpression(TextBox.TextProperty);
             BindingExpression be1 = cbTime.GetBindingExpression(ComboBox.SelectedItemProperty);
             BindingExpression be2 = cbTypeOfClient.GetBindingExpression(ComboBox.SelectedItemProperty);
-            BindingExpression be3 = cbService.GetBindingExpression(ComboBox.SelectedItemProperty);
-            BindingExpression be4 = cbDepartment.GetBindingExpression(ComboBox.SelectedItemProperty);
+            BindingExpression be3 =  MyList.GetBindingExpression(ListBox.SelectedItemProperty);
+            BindingExpression be4 = MyListDepartment.GetBindingExpression(ListBox.SelectedItemProperty);
             BindingExpression be5 = tbName.GetBindingExpression(TextBox.TextProperty);
             BindingExpression be6 = dpDate.GetBindingExpression(DatePicker.SelectedDateProperty);
 
@@ -191,8 +174,8 @@ namespace FinalAssignmentSDT
 
             if (Validation.GetErrors(tbName).Count() == 0
                 && Validation.GetErrors(tbPhoneNumber).Count() == 0
-                && Validation.GetErrors(cbDepartment).Count() == 0
-                && Validation.GetErrors(cbService).Count() == 0
+                && Validation.GetErrors(MyList).Count() == 0
+                && Validation.GetErrors(MyListDepartment).Count() == 0
                 && Validation.GetErrors(cbTime).Count() == 0
                 && Validation.GetErrors(dpDate).Count() == 0
                 )
@@ -222,31 +205,29 @@ namespace FinalAssignmentSDT
                 tbName.Text = "";
                 tbPhoneNumber.Text = "";
                 cbTime.SelectedIndex = -1;
-                cbDepartment.SelectedIndex = -1;
-                cbService.SelectedIndex = -1;
                 cbTypeOfClient.SelectedIndex = -1;
 
-
-                Services = new ObservableCollection<string>();
-                Departments = new ObservableCollection<string>();
-
+                foreach (string service in Services.ToList())
+                {
+                    Services.Remove(service);
+                }
+                foreach (string department in Departments.ToList())
+                {
+                    Departments.Remove(department);
+                }
+                
                 Validation.ClearInvalid(be4);
                 Validation.ClearInvalid(be1);
                 Validation.ClearInvalid(be2);
                 Validation.ClearInvalid(be3);
             }
-            
-                
-            
-
-
         }
 
         private void dpDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
 
             Dictionary<DateTime, List<string>>.KeyCollection arrangedDates = arrangedTime.Keys;
-            List<string> copyOfSlots = new List<string>() { "AM9", "AM11", "PM1", "PM3", "PM5" };
+            List<string> copyOfSlots = new List<string>() { "9AM", "10AM", "11AM", "12AM", "1PM", "2PM", "3PM", "4PM", "5PM" };
             foreach (DateTime arrangedDate in arrangedDates)
             {
                 if (arrangedDate == tempAppointment.Date)
@@ -274,19 +255,58 @@ namespace FinalAssignmentSDT
         
         private void WriteToXML()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Appointment>));
-            TextWriter writer = new StreamWriter("appointments.xml");
-            serializer.Serialize(writer, appointmentsList);
-            writer.Close();
+            string path = DirectoryCheck();
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Appointment>));
+                TextWriter writer = new StreamWriter(path);
+                serializer.Serialize(writer, appointmentsList);
+                writer.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Problem in writing data to XML");
+            }
         }
+        private string DirectoryCheck()
+        {
+            string directoryPath = @"..\..\"+"XMLDirectory";
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+            string xmlFilePath = directoryPath + @"\appointments.xml";
+            try
+            {
+                if (!File.Exists(xmlFilePath))
+                {
+                    var xmlFileStream = File.Create(xmlFilePath);
+                    xmlFileStream.Close();
+                }
+            }
+            catch (Exception e) {
+                MessageBox.Show("Problem in XML file Loading");
+            }
+            return xmlFilePath;
 
+        }
         private void ReadFromXML()
         {
-            string path = "appointments.xml";
-            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Appointment>));
-            StreamReader reader = new StreamReader(path);
-            appointmentsListXML = (ObservableCollection<Appointment>)serializer.Deserialize(reader);
-            reader.Close();
+            string path = DirectoryCheck();
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Appointment>));
+                StreamReader reader = new StreamReader(path);
+                if (reader != null)
+                {
+                    appointmentsListXML = (ObservableCollection<Appointment>)serializer.Deserialize(reader);
+                }
+                reader.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Problem in reading XML file");
+            }
         }
 
         private void btnDisplay_Click(object sender, RoutedEventArgs e)
@@ -298,15 +318,13 @@ namespace FinalAssignmentSDT
             }
 
                 foreach (Appointment a in appointmentsListXML)
-            {
-                
-
+                {
                 bool contains = !(appointmentsList.Contains(a));
                 if (contains)
-                {
+                    {
                     appointmentsList.Add(a);
+                    }
                 }
-            }
             datagrid.Items.Refresh();
         }
 
@@ -427,6 +445,54 @@ namespace FinalAssignmentSDT
             datagrid.Items.Refresh();
         }
 
-        
+        private void cbTime_DropDownOpened(object sender, EventArgs e)
+        {
+            Dictionary<DateTime, List<string>>.KeyCollection arrangedDates = arrangedTime.Keys;
+            List<string> copyOfSlots = new List<string>() { "9AM", "10AM", "11AM", "12AM", "1PM", "2PM", "3PM", "4PM", "5PM" };
+            foreach (DateTime arrangedDate in arrangedDates)
+            {
+                if (arrangedDate == tempAppointment.Date)
+                {
+                    List<string> arrangedSlots = arrangedTime[TempAppointment.Date];
+                    foreach (string slot in copyOfSlots.ToList())
+                    {
+                        if (arrangedSlots.Contains(slot))
+                        {
+                            copyOfSlots.Remove(slot);
+                        }
+                    }
+                }
+            }
+
+            foreach (string slot in Slots.ToList())
+            {
+                Slots.Remove(slot);
+            }
+            foreach (string slot in copyOfSlots)
+            {
+                Slots.Add(slot);
+            }
+        }
+
+        private void MyList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {//
+            if (MyList.SelectedIndex != -1)
+            {
+                Dictionary<string, Dictionary<string, List<string>>> serviceDetails = Firm.Firm_;
+                List<string> keyColl = serviceDetails[TempAppointment.TypeOfCustomer][tempAppointment.Service];
+                Departments.Clear();
+                foreach (string department in keyColl)
+                {
+                    Departments.Add(department);
+                }
+
+            }
+            MyListDepartment.Items.Refresh();
+        }
+
+        private void MyListDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     } 
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalAssignmentSDT", "FinalAssignmentSDT\FinalAssignmentSDT.csproj", "{9ECB83EC-6A52-40FF-BA98-E7C1CDB0D18C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSegregation", "DataSegregation\DataSegregation.csproj", "{E0B0D0F8-730A-4FC1-AB46-6A35992689D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9ECB83EC-6A52-40FF-BA98-E7C1CDB0D18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ECB83EC-6A52-40FF-BA98-E7C1CDB0D18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ECB83EC-6A52-40FF-BA98-E7C1CDB0D18C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0B0D0F8-730A-4FC1-AB46-6A35992689D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0B0D0F8-730A-4FC1-AB46-6A35992689D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0B0D0F8-730A-4FC1-AB46-6A35992689D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0B0D0F8-730A-4FC1-AB46-6A35992689D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

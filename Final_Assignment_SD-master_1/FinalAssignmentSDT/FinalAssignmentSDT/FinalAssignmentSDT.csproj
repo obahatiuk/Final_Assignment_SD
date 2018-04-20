@@ -54,14 +54,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Appointment.cs" />
-    <Compile Include="AppointmentList.cs" />
-    <Compile Include="ComboBoxValidationRule.cs" />
-    <Compile Include="Customer.cs" />
-    <Compile Include="DateValidation.cs" />
-    <Compile Include="Firm.cs" />
-    <Compile Include="IFirm.cs" />
-    <Compile Include="ITConsultancy.cs" />
     <Compile Include="TextBoxValidationRule.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ComboBoxValidationRule.cs" />
+    <Compile Include="DateValidation.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -102,6 +96,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataSegregation\DataSegregation.csproj">
+      <Project>{e0b0d0f8-730a-4fc1-ab46-6a35992689d6}</Project>
+      <Name>DataSegregation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
